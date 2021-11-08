@@ -13,10 +13,20 @@ function getThings() {
 
 class HelloWorld extends React.Component {
   render () {
+    const { things } = this.props;
+
+    const thingsList = things.map((thing) => {
+      return <li key={thing.name}>{thing.name} {thing.guid}</li>
+    })
+
     return (
       <>
         Greeting: {this.props.greeting}
+
         <button className="getThingsBtn" onClick={() => this.props.getThings()}>getThings</button>
+
+        <br />
+        <ul>{ thingsList }</ul>
       </>
     );
   }
